@@ -1,0 +1,251 @@
+/* apply a natural box layout model to all elements, but allowing components to change */
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center, hr,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+/* My own CSS starts here */
+
+body {
+    max-width: 428px;
+    height: 926px;
+    margin: 0 auto;
+    padding: 0;
+    background-color: black;
+    color: white;
+    font-family: 'Cairo', sans-serif;
+    text-transform: uppercase;
+    overflow-y: scroll;
+}
+
+div.practice_races span.race_type, p.time_note {
+    text-transform: none;
+}
+
+div.round_date, span.event_year, .race_type, .race_day, div.time_note {
+    font-family: 'Genos', sans-serif;
+}
+
+div.main_container {
+    margin: 0 auto;
+    padding: 0;
+}
+
+div.round_box {
+    width: 396px;
+    border: 2px solid red;
+    border-width: 2px 2px 0 0;
+    border-radius: 30px;
+    padding: 17px 0 40px 15px;
+    margin: 34px auto;
+    position: relative;
+}
+
+/* we need to add some black box or something, maybe an ::after to cover that last bit of the red border like the "ROUND 8" box */
+
+p.round_number_line {
+    font-family: 'Cairo';
+    font-size: 15px;
+    color: red;
+    position: absolute;
+    background-color: black;
+    padding: 0px 14px 10px 12px;
+    top: -15px;
+    left: -2px;
+}
+
+div.round_header {
+    /* display: flex and justify-content:space-between used to go here, removed so as to not cause issues due to the flag's absolute positioning */
+    position: relative;
+}
+
+div.round_date {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Genos';
+    font-weight: 700;
+}
+
+span.days {
+    font-size: 30px;
+    line-height: 36px;
+}
+
+div.month_container {
+    width: 65px;
+    height: 21px;
+    background-color: white;
+    border-radius: 6px;
+    text-align: center;
+}
+
+span.month {
+    position: relative;
+    top: -8px;
+    left: 2px;
+    font-size: 25px;
+    color: black;
+
+}
+
+img.country_flag {
+    width: 49px;
+    height: 23px;
+    border-radius: 5px;
+    position: absolute;
+    top: 8px;
+    right: 38px;
+}
+
+/* decided to use position:absolute on the flag instead of applying display:flex to its parent, because aligning the flag with the center of the day range (span.days) was a pain in the ass and using flexbox to do exactly that would've probably required me to move the month (span.month) to AFTER the flag in the DOM/HTML structure */
+
+hr {
+    border: none;
+    border-top: 1px solid white;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    margin-right: 3px;
+}
+
+div.round_content {
+    padding-right: 38px;
+}
+
+div.round_country {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+span.country_name {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 37px;
+}
+
+div.event_heading {
+    margin-top: -3px;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+}
+
+span.event_name {
+    font-size: 15px;
+}
+
+span.event_year {
+    font-size: 21px;
+}
+
+div.races {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+div.practice_races {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+div.main_races {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.race_info {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+/* .race_info > * {
+    flex: 1; 
+} */
+
+span.race_type {
+    flex-basis: 146px;
+    width: 106px;
+    font-size: 21px;
+}
+
+span.race_day {
+    flex-basis: 96px;
+    font-size: 21px;
+    /* text-align: center; */
+}
+div.race_time_container {
+    width: 101px;
+    height: 18.6px;
+    border-radius: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+}
+
+div.practice_races div.race_time_container {
+    color: red;
+    background-color: white;
+}
+
+div.qualifying_race div.race_time_container {
+    color: white;
+    background-color: #3D3A3A;
+}
+
+div.final_race div.race_time_container {
+    color: white;
+    background-color: red;
+}
+
+div.time_note_container {
+    text-align: center;
+    font-size: 15px;
+    margin-right: 18px;
+}
+
+div.round_box::after {
+    content: '';
+    display: block;
+    width: 52px;
+    height: 30px;
+    background-color: black;
+    position: absolute;
+    bottom: -1px;
+    right: -15px;
+}
