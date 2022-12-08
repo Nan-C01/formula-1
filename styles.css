@@ -50,7 +50,7 @@ div.practice_races span.race_type, p.time_note {
     text-transform: none;
 }
 
-div.round_date, span.event_year, .race_type, .race_day, div.time_note {
+div.round_date, span.event_year, .race_type, .race_day, div.time_note_container {
     font-family: 'Genos', sans-serif;
 }
 
@@ -65,8 +65,12 @@ div.round_box {
     border-width: 2px 2px 0 0;
     border-radius: 30px;
     padding: 17px 0 40px 15px;
-    margin: 34px auto;
+    margin: 34px auto 0px;
     position: relative;
+}
+
+div.round_box:not(:first-of-type) {
+    margin-top: 10px;
 }
 
 p.round_number_line {
@@ -88,7 +92,6 @@ div.round_header {
 div.round_date {
     display: flex;
     flex-direction: column;
-    font-family: 'Genos';
     font-weight: 700;
 }
 
