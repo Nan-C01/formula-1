@@ -69,8 +69,6 @@ div.round_box {
     position: relative;
 }
 
-/* we need to add some black box or something, maybe an ::after to cover that last bit of the red border like the "ROUND 8" box */
-
 p.round_number_line {
     font-family: 'Cairo';
     font-size: 15px;
